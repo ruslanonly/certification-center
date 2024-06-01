@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "python ./backend/main.py"
+    "start": "concurrently \"cd ./backend && uvicorn main:app --port 3000 --reload\"  \"cd ./frontend && npm run dev \""
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
