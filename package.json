@@ -1,0 +1,11 @@
+{
+  "name": "certification-center",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "python ./backend/main.py"
+  },
+  "author": "",
+  "license": "ISC"
+}
