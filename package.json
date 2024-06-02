@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"cd ./backend && uvicorn main:app --port 3000 --reload\"  \"cd ./frontend && npm run dev \""
+    "start": "concurrently \"cd ./backend && uvicorn main:app --port 8000 --reload\"  \"cd ./frontend && npm run dev \""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mui/lab": "^5.0.0-alpha.170",
     "concurrently": "^8.2.2"
   }
 }

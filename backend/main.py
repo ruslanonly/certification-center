@@ -62,7 +62,7 @@ class CertificationCenter:
                 "w2": str(certificate_sign[1]),
                 "s": str(certificate_sign[2])
             },
-            "parent_certificates": self.parent_certificates,
+            # "parent_certificates": self.parent_certificates,
             "public_keys": user_keys.get_public_keys_object(),
             "private_keys": user_keys.get_private_keys_object(),
             "pChecks": pChecks,
@@ -124,37 +124,32 @@ async def hello():
 
 @app.get("/initializeCenters")
 async def initialize_centers():
-    certificationCenter1 = CertificationCenter("Первый сертификационный центр")
-    certificationCenters["Первый сертификационный центр"] = certificationCenter1
+    certificationCenter1 = CertificationCenter("First")
+    certificationCenters["First"] = certificationCenter1
 
-    certificationCenter2 = CertificationCenter("Второй сертификационный центр")
-    certificationCenters["Второй сертификационный центр"] = certificationCenter2
+    # certificationCenter2 = CertificationCenter("Второй сертификационный центр")
+    # certificationCenters["Второй сертификационный центр"] = certificationCenter2
 
-    certificationCenter3 = CertificationCenter("Третий сертификационный центр")
-    certificationCenters["Третий сертификационный центр"] = certificationCenter3
+    # certificationCenter3 = CertificationCenter("Третий сертификационный центр")
+    # certificationCenters["Третий сертификационный центр"] = certificationCenter3
 
-    certificationCenter4 = CertificationCenter("Четвертый сертификационный центр")
-    certificationCenters["Четвертый сертификационный центр"] = certificationCenter4
+    # certificationCenter4 = CertificationCenter("Четвертый сертификационный центр")
+    # certificationCenters["Четвертый сертификационный центр"] = certificationCenter4
 
-    certificationCenter2.register_from_center(certificationCenter1)
-    certificationCenter3.register_from_center(certificationCenter1)
+    # certificationCenter2.register_from_center(certificationCenter1)
+    # certificationCenter3.register_from_center(certificationCenter1)
 
     return {
         "message": "OK"
     }
 
-@app.get("/getCertificationCenters")
-async def get_certification_centers():
-    return list(certificationCenters.keys())
+# @app.get("/getCertificationCenters")
+# async def get_certification_centers():
+#     return list(certificationCenters.keys())
 
-@app.get("/registerInCenter/{center_id}")
-async def register_in_center(center_id: str):
-    if center_id not in certificationCenters.keys():
-        return {
-            "message": "Wrong center id"
-        }
-
-    return certificationCenters[center_id].register_user()
+@app.get("/registerUser")
+async def register_in_center():
+    return certificationCenters["First"].register_user()
 
 @app.get("/createKeyPair")
 async def create_key_pair():
