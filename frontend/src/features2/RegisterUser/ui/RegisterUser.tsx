@@ -6,6 +6,7 @@ import { useState } from "react";
 export function RegisterUser() {
     const [isRegistering, setIsRegistering] = useState(false)
     const { public_keys, private_keys, certificate, certificate_sign, setAttr } = useCertificationStore()
+
     const registerUser = async () => {
         setIsRegistering(true)
         await fetch('http://localhost:8000/registerUser').then(async (response) => {

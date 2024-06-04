@@ -14,6 +14,9 @@ export interface ICertificateSign {
 }
 
 interface ICertificationStore {
+    CLIENT_ID?: string;
+    PEER_ID?: string;
+
     private_keys?: {
         x: string
     },
@@ -23,9 +26,9 @@ interface ICertificationStore {
         user_public_key: IPublicKeys
     },
     certificate_sign?: ICertificateSign
-    setAttr: (key: keyof ICertificationStore, value: bigint | number | undefined) => void,
+    setAttr: (key: keyof ICertificationStore, value: string | bigint | number | undefined) => void,
 }
 
-export const useCertificationStore= create<ICertificationStore>((set) => ({
+export const useCertificationStore = create<ICertificationStore>((set) => ({
     setAttr: (key, value) => set(() => ({ [key]: value })),
 }))

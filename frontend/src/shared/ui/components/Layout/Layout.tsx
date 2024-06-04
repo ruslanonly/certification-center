@@ -4,7 +4,7 @@ import styles from './Layout.module.scss'
 
 export function Layout() {
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="lg">
       <div className={styles.wrapper}>
         <div className={styles.pageWrapper}>
           <Outlet/>
