@@ -13,6 +13,21 @@ export interface ICertificateSign {
     s?: string
 }
 
+export interface IRegisterData {
+    private_keys: {
+        x: string
+    },
+    public_keys: IPublicKeys,
+    certificate: {
+        certification_center_public_key: IPublicKeys,
+        user_public_key: IPublicKeys
+    },
+    certificate_sign?: ICertificateSign,
+
+    pChecks?: string[],
+    qChecks?: string[]
+}
+
 interface ICertificationStore {
     CLIENT_ID?: string;
     PEER_ID?: string;
@@ -25,10 +40,15 @@ interface ICertificationStore {
         certification_center_public_key: IPublicKeys,
         user_public_key: IPublicKeys
     },
-    certificate_sign?: ICertificateSign
-    setAttr: (key: keyof ICertificationStore, value: string | bigint | number | undefined) => void,
+    certificate_sign?: ICertificateSign,
+    pChecks?: string[],
+    qChecks?: string[]
+
+    setAttr: <K extends keyof ICertificationStore>(key: K, value: ICertificationStore[K]| undefined) => void,
+    getValue: <K extends keyof ICertificationStore>(key: K) => ICertificationStore[K] | undefined,
 }
 
-export const useCertificationStore = create<ICertificationStore>((set) => ({
+export const useCertificationStore = create<ICertificationStore>((set, get) => ({
     setAttr: (key, value) => set(() => ({ [key]: value })),
+    getValue: (key) => get()[key]
 }))

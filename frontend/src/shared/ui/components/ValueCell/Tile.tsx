@@ -7,7 +7,7 @@ interface IValueCellProps {
 
 export function ValueCell({ name, value }: IValueCellProps) {
   return (
-    <TableContainer component={({ children }) => <Paper elevation={3}>{children}</Paper>}>
+    <TableContainer component={({ children }) => <Paper elevation={3} sx={{overflow: 'hidden'}}>{children}</Paper>}>
         <Table size="small">
             <TableBody>
                 <TableRow
